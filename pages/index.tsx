@@ -11,7 +11,7 @@ export default function Home() {
         <title>Music App</title>
       </Head>
 
-      <main className="flex">
+      <main className="flex flex-col md:flex-row">
         <Sidebar />
         <Center />
       </main>

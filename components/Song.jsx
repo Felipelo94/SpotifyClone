@@ -41,7 +41,9 @@ function Song({ order, track }) {
         <p className="hidden w-40 truncate md:inline">
           {track.track.album.name}
         </p>
-        <p>{millisToMinutesAndSeconds(track.track.duration_ms)}</p>
+        <p className="hidden sm:inline">
+          {millisToMinutesAndSeconds(track.track.duration_ms)}
+        </p>
       </div>
     </div>
   )

@@ -30,14 +30,21 @@ function Sidebar() {
   console.log(playlist)
 
   return (
-    <div className="text-xm w-screen overflow-y-scroll  border-r border-gray-900 p-5 pb-6 text-gray-500 scrollbar-hide sm:max-w-[12rem]  md:inline-flex lg:max-w-[15rem] lg:text-sm  ">
-      <div className="space-y-4  ">
+    <div className="text-xm flex w-screen flex-row overflow-y-scroll  border-r border-gray-900 p-5 pb-6 text-gray-500 scrollbar-hide md:inline-flex md:max-w-[12rem] lg:max-w-[15rem] lg:text-sm  ">
+      <div className=" flex w-full items-center justify-evenly sm:w-full md:flex-col md:items-start md:justify-start md:space-y-4">
         <button
           onClick={() => setPlaylistId('37i9dQZEVXbMDoHDwVN2tF')}
           className="flex items-center space-x-2 hover:text-white "
         >
           <HomeIcon className="h-5 w-5" />
           <p className="hidden md:inline">Home</p>
+        </button>
+        <button
+          onClick={() => setPlaylistId('11WrOV9QMQ36oXSVLjt7lP')}
+          className="flex items-center space-x-2 hover:text-white "
+        >
+          <HeartIcon className="h-5 w-5" />
+          <p className="hidden md:inline">Favs</p>
         </button>
 
         <button className="flex items-center space-x-2 hover:text-white ">
@@ -51,7 +58,7 @@ function Sidebar() {
         >
           <p>Log Out</p>
         </button>
-        <hr className="hidden items-center space-x-2 border-t-[0.1px] border-gray-900 hover:text-white md:flex" />
+        <hr className="hidden items-center space-x-2 border-t-[0.1px] border-gray-900 hover:text-white md:inline" />
 
         <button className="hidden items-center space-x-2 hover:text-white md:flex ">
           <PlusCircleIcon className="h-5 w-5" />
