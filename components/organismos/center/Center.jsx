@@ -3,9 +3,12 @@ import { signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { shuffle } from 'lodash'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { playlistIdState, playlistState } from '../atoms/playlistAtom'
-import useSpotify from '../hooks/useSpotify'
-import Songs from './Songs'
+import {
+  playlistIdState,
+  playlistState,
+} from '../../atoms/playlist/playlistAtom'
+import useSpotify from '../../hooks/useSpotify'
+import Songs from '../../moleculas/songs/Songs'
 
 const colors = [
   'from-indigo-300',
@@ -19,6 +22,8 @@ const colors = [
 
 function Center() {
   const spotifyApi = useSpotify()
+  const [search, setSearch] = useState('')
+  const [searchResults, setSearchResults] = useState([])
   const { data: session } = useSession()
   const [color, setColor] = useState(null)
   const playlistId = useRecoilValue(playlistIdState)
@@ -40,17 +45,20 @@ function Center() {
   return (
     <div className="h-screen flex-grow overflow-y-scroll text-white scrollbar-hide">
       <header className="absolute top-5 right-8">
-        <div
-          onClick={signOut}
-          className=" hidden  cursor-pointer items-center space-x-3 rounded-full bg-orange-500 p-1  pr-2 opacity-90 hover:opacity-80 md:flex"
-        >
-          <img
-            className="h-10 w-10 rounded-full"
-            src={session?.user.image}
-            alt="useravatar"
-          />
-          <h2>{session?.user.name}</h2>
-          <ChevronDownIcon className="h-5 w-5" />
+        <div>
+          <div className="flex">{/* <SearchBar /> */}</div>
+          <div
+            onClick={signOut}
+            className=" hidden  cursor-pointer items-center space-x-3 rounded-full bg-gray-900 p-1  pr-2 opacity-90 hover:opacity-80 md:flex"
+          >
+            <img
+              className="h-10 w-10 rounded-full"
+              src={session?.user.image}
+              alt="useravatar"
+            />
+            <h2>{session?.user.name}</h2>
+            <ChevronDownIcon className="h-5 w-5" />
+          </div>
         </div>
       </header>
       <section

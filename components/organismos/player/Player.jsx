@@ -1,9 +1,9 @@
 import { useSession } from 'next-auth/react'
 import { useCallback, useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { currentTrackIdState, isPlayingState } from '../atoms/songAtom'
-import useSpotify from '../hooks/useSpotify'
-import useSongInfo from '../hooks/useSongInfo'
+import { currentTrackIdState, isPlayingState } from '../../atoms/song/songAtom'
+import useSpotify from '../../hooks/useSpotify'
+import useSongInfo from '../../hooks/useSongInfo'
 import { debounce } from 'lodash'
 import {
   HeartIcon,
@@ -54,7 +54,7 @@ function Player() {
   useEffect(() => {
     if (spotifyApi.getAccessToken() && !currentTrackId) {
       fetchCurrentSong()
-      setVolume(50)
+      setVolume(100)
     }
   }, [currentTrackId, spotifyApi, session])
 

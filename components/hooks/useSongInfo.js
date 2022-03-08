@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRecoilState } from 'recoil'
-import useSpotify from '../hooks/useSpotify'
-import { currentTrackIdState, isPlayingState } from '../atoms/songAtom'
+import useSpotify from './useSpotify'
+import { currentTrackIdState, isPlayingState } from '../atoms/song/songAtom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 

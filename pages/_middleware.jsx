@@ -5,6 +5,9 @@ export async function middleware(req) {
   const token = await getToken({ req, secret: process.env.JWT_SECRET })
 
   const { pathname } = req.nextUrl
+  if (token && pathname === '/login') {
+    return NextResponse.redirect('http://localhost:3000/')
+  }
 
   if (pathname.includes('/api/auth') || token) {
     return NextResponse.next()
