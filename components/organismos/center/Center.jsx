@@ -46,7 +46,6 @@ function Center() {
     <div className="h-screen flex-grow overflow-y-scroll text-white scrollbar-hide">
       <header className="absolute top-5 right-8">
         <div>
-          <div className="flex">{/* <SearchBar /> */}</div>
           <div
             onClick={signOut}
             className=" hidden  cursor-pointer items-center space-x-3 rounded-full bg-gray-900 p-1  pr-2 opacity-90 hover:opacity-80 md:flex"
@@ -65,7 +64,7 @@ function Center() {
         className={`flex h-80 items-end  space-x-7 bg-gradient-to-b p-8 ${color} to-black text-white`}
       >
         <img
-          className="h-44 w-44 shadow-2xl"
+          className="h-44 w-44 border-2 border-gray-300 shadow-2xl"
           src={playlist?.images?.[0]?.url}
           alt="Playlist Cover"
         />

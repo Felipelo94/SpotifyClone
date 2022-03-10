@@ -6,7 +6,7 @@ import { currentTrackIdState, isFav, isPlayingState } from './songAtom'
 import { HeartIcon } from '@heroicons/react/outline'
 import { TrashIcon } from '@heroicons/react/solid'
 
-function Song({ order, track, fav }) {
+function Song({ order, track, fav, onDelete }) {
   const spotifyApi = useSpotify()
   const [currentTrackId, setCurrentTrackId] =
     useRecoilState(currentTrackIdState)
@@ -25,28 +25,7 @@ function Song({ order, track, fav }) {
     )
   }
 
-  const deleteTrack = () => {
-    fav = false
-
-    var tracks = [{ uri: `${track.track.uri}` }]
-    var playlistId = '11WrOV9QMQ36oXSVLjt7lP'
-
-    spotifyApi.removeTracksFromPlaylist(playlistId, tracks).then(
-      function (data) {
-        console.log(track.track.uri)
-      },
-      function (err) {
-        console.log(
-          'Something went wrong!',
-          err,
-          `[{ uri: '${track.track.uri}'}]`
-        )
-      }
-    )
-  }
-
   const addTrack = () => {
-    fav = true
     spotifyApi
       .addTracksToPlaylist('11WrOV9QMQ36oXSVLjt7lP', [`${track.track.uri}`])
       .then(
@@ -59,6 +38,20 @@ function Song({ order, track, fav }) {
       )
   }
 
+  const deleteTrack = () => {
+    var tracks = [{ uri: `${track.track.uri}` }]
+    var playlistId = '11WrOV9QMQ36oXSVLjt7lP'
+
+    spotifyApi.removeTracksFromPlaylist(playlistId, tracks).then(
+      function (data) {
+        onDelete(track.track.uri)
+        console.log('Song Removed')
+      },
+      function (err) {
+        console.log('Something went wrong!', err)
+      }
+    )
+  }
   const playSong = () => {
     setCurrentTrackId(track.track.id)
 
