@@ -22,8 +22,6 @@ const colors = [
 
 function Center() {
   const spotifyApi = useSpotify()
-  const [search, setSearch] = useState('')
-  const [searchResults, setSearchResults] = useState([])
   const { data: session } = useSession()
   const [color, setColor] = useState(null)
   const playlistId = useRecoilValue(playlistIdState)

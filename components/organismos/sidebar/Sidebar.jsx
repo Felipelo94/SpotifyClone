@@ -35,7 +35,7 @@ function Sidebar() {
       <div className="flex w-full items-center justify-evenly sm:w-full md:flex-col md:items-start md:justify-start md:space-y-4">
         <button
           onClick={clicked}
-          className={`flex items-center space-x-2 hover:text-white focus:text-white active:text-red-500`}
+          className={`selected flex items-center space-x-2 hover:text-white focus:text-white active:text-red-500`}
         >
           <HomeIcon className="h-5 w-5" />
           <p className={`hidden md:inline `}>Home</p>

@@ -6,17 +6,14 @@ import useSpotify from '../../hooks/useSpotify'
 import useSongInfo from '../../hooks/useSongInfo'
 import { debounce } from 'lodash'
 import {
-  HeartIcon,
-  VolumeUpIcon as VolumeDownIcon,
-} from '@heroicons/react/outline'
-import {
   RewindIcon,
   SwitchHorizontalIcon,
   FastForwardIcon,
   PauseIcon,
   PlayIcon,
-  ReplyIcon,
   VolumeUpIcon,
+  VolumeOffIcon,
+  RefreshIcon,
 } from '@heroicons/react/solid'
 
 function Player() {
@@ -54,9 +51,9 @@ function Player() {
   useEffect(() => {
     if (spotifyApi.getAccessToken() && !currentTrackId) {
       fetchCurrentSong()
-      setVolume(100)
+      setVolume(50)
     }
-  }, [currentTrackId, spotifyApi, session])
+  }, [currentTrackId, spotifyApi, session, songInfo])
 
   useEffect(() => {
     if (volume > 0 && volume < 100) {
@@ -99,10 +96,10 @@ function Player() {
           onClick={() => spotifyApi.skipToNext()}
           className="button"
         />
-        <ReplyIcon className="sm:button hidden sm:flex" />
+        <RefreshIcon className="sm:button hidden sm:flex" />
       </div>
       <div className=" hidden items-center justify-end space-x-3 pr-5 sm:flex md:space-x-4">
-        <VolumeDownIcon
+        <VolumeOffIcon
           onClick={() => volume > 0 && setVolume(volume - 10)}
           className="button"
         />

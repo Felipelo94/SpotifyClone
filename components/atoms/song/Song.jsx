@@ -30,7 +30,7 @@ function Song({ order, track, fav, onDelete }) {
       .addTracksToPlaylist('11WrOV9QMQ36oXSVLjt7lP', [`${track.track.uri}`])
       .then(
         function (data) {
-          console.log('Added tracks to playlist!', fav)
+          console.log('Added tracks to playlist!', track)
         },
         function (err) {
           console.log(`'Something went wrong!'`, err)
@@ -65,6 +65,7 @@ function Song({ order, track, fav, onDelete }) {
       <div className="item-center  flex space-x-4 ">
         <p>{order + 1}</p>
         <img
+          data-testid="album-cover"
           onClick={playSong}
           className="h-10 w-10 cursor-pointer"
           src={track.track.album.images[0].url}
