@@ -14,8 +14,6 @@ export async function middleware(req) {
   }
 
   if (!token && pathname !== '/login') {
-    console.log(NextResponse.redirect)
-
     return NextResponse.redirect('http://localhost:3000/login')
   }
 }

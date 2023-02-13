@@ -14,7 +14,7 @@ function Songs() {
     <div className=" flex flex-col space-y-1 px-8 pb-28 text-white">
       {playlist?.tracks.items.map((track, i) => (
         <Song
-          key={track.track.id}
+          key={i}
           track={track}
           order={i}
           fav={isFav}
